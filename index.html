@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+           
+            margin-bottom: 20px;
+            background-color: rgba(0, 251, 255, 0.634);
+            height: 40px;
+           font-size: 18;
+        }
+  #con1 {
+   background-color: rgb(210, 245, 176) ;
+    width: 175px;
+    height: max-content;
+    margin-bottom: 20px;
+
+}
+#con2 {
+    background-color:rgb(210, 245, 176) ;
+    height: max-content;
+    width: 175px;
+    margin-bottom: 20px;
+
+}
+
+.blue{
+    color: blue;
+}
+
+.red{
+    color: red;
+}
+
+button{
+    height: 45px;
+    width: 100px;
+    background-color: blue;
+    margin-bottom: 20px;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+    <div></div>
+        <input id="Celcius" type="text" placeholder="Enter Temp In C">
+        <button onclick="convertToF()">Covert To F</button>
+   
+   
+    <div id="con1" >  </div>
+    <input id="Fahrenheit" type="text" placeholder="Enter Temp In F">
+    <button onclick="convertToC()" >Covert To C</button>
+    <div id="con2"  > </div>
+    <script>
+        let con1 = document.getElementById('con1'); 
+        let con2 = document.getElementById('con2');
+        
+        function convertToF(){
+            temp1 = document.getElementById('Celcius');
+            let C = Number(temp1.value);
+            if(C==0){
+                alert('Please Enter Temperature')
+                return
+            }
+            if(isNaN(C)){
+                con1.setAttribute('class' , 'red');
+                con1.innerText ="Please Enter Valid Temp" 
+                return
+            }
+            let Fahrenheit = (C * 9/5) + 32;
+            if(Fahrenheit>100){
+                con1.setAttribute('class' , 'red');
+            }else  if(Fahrenheit<100){
+                con1.setAttribute('class' , 'blue');
+            }
+            con1.innerText =`Temperature In F:${Fahrenheit.toFixed(2)}`
+        }
+
+        function convertToC(){
+            temp2 = document.getElementById('Fahrenheit');
+            let F = Number(temp2.value);
+            if(F==0){
+                alert('Please Enter Temperature')
+                return
+            }
+            if(isNaN(F)){
+                con2.setAttribute('class' , 'red');
+                con2.innerText ="Please Enter Valid Temp" 
+                return
+            }
+            let Celcius = (F -32) * 5/9;
+            if(Celcius>40){
+                con2.setAttribute('class' , 'red');
+            }else  if(Celcius<40){
+                con2.setAttribute('class' , 'blue');
+            }
+            con2.innerText =`Temperature In C:${Celcius.toFixed(2)}`
+ 
+        }
+    </script>
+</body>
+</html>
